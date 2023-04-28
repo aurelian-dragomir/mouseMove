@@ -3,3 +3,7 @@
     -fx-background-image: url("mouse.png");
     -fx-background-size: 600;
 }
+
+.button, .text-field{
+    -fx-opacity: 0.75
+}

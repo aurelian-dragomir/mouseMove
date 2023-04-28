@@ -11,8 +11,8 @@
     </padding>
 
     <children>
-        <Button fx:id="okButton" text="OK" onAction="#okButtonOnAction" styleClass="okButton"/>
-        <TextField fx:id="textField" styleClass="textField" maxWidth="100"/>
+        <Button fx:id="startButton" text="Start" onAction="#startButtonOnAction"/>
+        <TextField fx:id="textField" maxWidth="50"/>
         <Button fx:id="exitButton" text="Exit" onAction="#exitButtonOnAction" styleClass="exitButton"/>
     </children>
 
