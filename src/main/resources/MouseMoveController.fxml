@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      fx:controller="com.mouse.move.MouseMoveController" styleClass="rootPane" fx:id="rootPane" spacing="10">
+    <padding>
+        <Insets bottom="10" left="25" right="25" top="25"/>
+    </padding>
+
+    <children>
+        <Button fx:id="okButton" text="OK" onAction="#okButtonOnAction" styleClass="okButton"/>
+        <TextField fx:id="textField" styleClass="textField" maxWidth="100"/>
+        <Button fx:id="exitButton" text="Exit" onAction="#exitButtonOnAction" styleClass="exitButton"/>
+    </children>
+
+</VBox>

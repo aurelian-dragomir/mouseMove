@@ -1,0 +1,5 @@
+.rootPane{
+    -fx-background-color: transparent;
+    -fx-background-image: url("mouse.png");
+    -fx-background-size: 600;
+}
