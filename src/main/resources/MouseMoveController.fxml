@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      fx:controller="com.mouse.move.MouseMoveController" styleClass="rootPane" fx:id="rootPane" spacing="10">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<GridPane hgap="10" vgap="25" alignment="center" xmlns:fx="http://javafx.com/fxml/1"
+          xmlns="http://javafx.com/javafx/17.0.2-ea"
+          fx:controller="com.mouse.move.MouseMoveController" styleClass="rootPane" fx:id="rootPane">
     <padding>
         <Insets bottom="10" left="25" right="25" top="25"/>
     </padding>
 
     <children>
-        <Button fx:id="startButton" text="Start" onAction="#startButtonOnAction"/>
-        <TextField fx:id="textField" maxWidth="50"/>
-        <Button fx:id="exitButton" text="Exit" onAction="#exitButtonOnAction" styleClass="exitButton"/>
+        <TextField GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="textField" maxWidth="50" editable="false"/>
     </children>
 
-</VBox>
+</GridPane>
