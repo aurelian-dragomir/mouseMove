@@ -25,13 +25,20 @@ import static java.time.DayOfWeek.SUNDAY;
 public class IdleTask implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IdleTask.class);
-
     private static final List<DayOfWeek> WEEKEND = Arrays.asList(SATURDAY, SUNDAY);
+    private static LocalTime WORK_START_TIME = LocalTime.of(10, 0, 0);
+    private static LocalTime WORK_END_TIME = LocalTime.of(18, 0, 0);
 
     private TextField textField;
 
+    //used String[] to avoid conversion of char into String for display
+    private String[] alphabet = new String[26];
+
     public IdleTask(TextField textField) {
         this.textField = textField;
+        for (char i = 'a'; i <= 'z'; i++) {
+            alphabet[i - 97] = Character.toString(i);
+        }
     }
 
     @Override
@@ -67,7 +74,7 @@ public class IdleTask implements Runnable {
         Platform.runLater(() -> {
             var r = new Robot();
             if (textField.getText().isEmpty()) {
-                textField.setText("a");
+                textField.setText(alphabet[(int) (Math.random() * alphabet.length)]);
                 r.mouseMove(r.getMouseX() + 5, r.getMouseY() + 5);
             } else {
                 textField.clear();
@@ -79,16 +86,10 @@ public class IdleTask implements Runnable {
     private static boolean isRomanianWorkingHours() {
         LocalDateTime dateTime = LocalDateTime.now(ZoneId.of("Europe/Bucharest"));
 
-        int hour = dateTime.getHour();
-        int min = dateTime.getMinute();
-        int sec = dateTime.getSecond();
-
         DayOfWeek dayOfWeek = dateTime.getDayOfWeek();
-        LOGGER.debug("time is {} : {} : {} and day is {}", hour, min, sec, dayOfWeek);
-        if (hour == 18 && (min != 0 || sec != 0)) {
-            return false;
-        }
+        LocalTime currTime = dateTime.toLocalTime();
 
-        return (hour >= 10 && hour <= 18) && !WEEKEND.contains(dayOfWeek);
+        return currTime.isAfter(WORK_START_TIME) && currTime.isBefore(WORK_END_TIME)
+                && !WEEKEND.contains(dayOfWeek);
     }
 }
